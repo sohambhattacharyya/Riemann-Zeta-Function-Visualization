@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 """
-Created on Tue May 15 03:19:18 2018
+Created on Mon Aug 27 23:26:14 2018
 
-@author: soham
+@author: newton
 """
+
 
 from scipy.special import zeta
 import numpy as np
@@ -24,8 +25,8 @@ def riemann_zeta(s):
     value = zeta(s)
   return value
 
-r = np.linspace(-7,7,10)
-i = np.linspace(-5,5,10)
+r = np.linspace(-10,10,1000)
+i = np.linspace(-10,10,1000)
 p = [complex(r[id_r],i[id_i]) for id_i in range(len(i)) for id_r in range(len(r))]
 
 q = [riemann_zeta(wee) for wee in p]
@@ -60,6 +61,7 @@ trace1 = go.Scatter(
     )
 )
 data = []
+"""
 for idx in range(len(input_real)):
     trace_new = go.Scatter(
         x=[input_real[idx],output_real[idx]],
@@ -72,6 +74,7 @@ for idx in range(len(input_real)):
     data.append(trace_new)    
     
 data.append(trace0)
+"""
 data.append(trace1)
 
 fig = go.Figure(data=data)
