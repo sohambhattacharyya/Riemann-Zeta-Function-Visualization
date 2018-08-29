@@ -50,7 +50,7 @@ def main():
         name = 'input',
         marker=dict(
             size=1,
-            color=np.sqrt(input_real**2 + input_imag**2),                
+            color=np.sqrt(sigma**2 + omega**2),                
             colorscale='Rainbow',   
             opacity=1
         )
@@ -63,7 +63,7 @@ def main():
         name = 'output',
         marker=dict(
             size=1,
-            color=np.sqrt(input_real**2 + input_imag**2),                
+            color=np.sqrt(sigma**2 + omega**2),                
             colorscale='Rainbow',   
             opacity=1
         )
