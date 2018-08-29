@@ -69,3 +69,5 @@ data = []
 data.append(trace1)
 fig = go.Figure(data=data)
 plot(fig, filename='viz-zeta.html')
+
+print(0)
