@@ -34,14 +34,14 @@ def riemann_zeta_approximator(s):
 def main():
     r = np.linspace(-10,10,1000)
     i = np.linspace(-10,10,1000)
-    p = [complex(r[id_r],i[id_i]) for id_i in range(len(i)) for id_r in range(len(r))]
+    s_coordinates = [complex(r[id_r],i[id_i]) for id_i in range(len(i)) for id_r in range(len(r))]
 
-    q = [riemann_zeta_approximator(wee) for wee in p]
+    transformed_coordinates = [riemann_zeta_approximator(wee) for wee in s_coordinates]
 
-    input_real = np.real(p)
-    input_imag = np.imag(p)
-    output_real = np.real(q)
-    output_imag = np.imag(q)
+    input_real = np.real(s_coordinates)
+    input_imag = np.imag(s_coordinates)
+    output_real = np.real(transformed_coordinates)
+    output_imag = np.imag(transformed_coordinates)
 
     trace0 = go.Scatter(
         x = input_real,
@@ -55,6 +55,7 @@ def main():
             opacity=1
         )
     )
+
     trace1 = go.Scatter(
         x = output_real,
         y = output_imag,
@@ -67,6 +68,7 @@ def main():
             opacity=1
         )
     )
+
     data = []
     data.append(trace0)
     fig = go.Figure(data=data)
