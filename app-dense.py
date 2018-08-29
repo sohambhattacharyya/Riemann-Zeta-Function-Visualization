@@ -38,14 +38,14 @@ def main():
 
     transformed_coordinates = [riemann_zeta_approximator(wee) for wee in s_coordinates]
 
-    input_real = np.real(s_coordinates)
-    input_imag = np.imag(s_coordinates)
-    output_real = np.real(transformed_coordinates)
-    output_imag = np.imag(transformed_coordinates)
+    sigma = np.real(s_coordinates)
+    omega = np.imag(s_coordinates)
+    transformed_sigma = np.real(transformed_coordinates)
+    transformed_omega = np.imag(transformed_coordinates)
 
     trace0 = go.Scatter(
-        x = input_real,
-        y = input_imag,
+        x = sigma,
+        y = omega,
         mode = 'markers',
         name = 'input',
         marker=dict(
@@ -57,8 +57,8 @@ def main():
     )
 
     trace1 = go.Scatter(
-        x = output_real,
-        y = output_imag,
+        x = transformed_sigma,
+        y = transformed_omega,
         mode = 'markers',
         name = 'output',
         marker=dict(
