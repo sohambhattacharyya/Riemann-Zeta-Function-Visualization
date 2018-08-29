@@ -11,7 +11,7 @@ import numpy as np
 from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
 import plotly.graph_objs as go
 
-def riemann_zeta(s):
+def riemann_zeta_approximator(s):
   value = 0
   terms = {}
   if np.iscomplex(s):
@@ -29,7 +29,7 @@ r = np.linspace(-10,10,1000)
 i = np.linspace(-10,10,1000)
 p = [complex(r[id_r],i[id_i]) for id_i in range(len(i)) for id_r in range(len(r))]
 
-q = [riemann_zeta(wee) for wee in p]
+q = [riemann_zeta_approximator(wee) for wee in p]
 
 input_real = np.real(p)
 input_imag = np.imag(p)
@@ -42,8 +42,8 @@ trace0 = go.Scatter(
     mode = 'markers',
     name = 'input',
     marker=dict(
-        size=4,
-        color='brown',                
+        size=1,
+        color=np.sqrt(input_real**2 + input_imag**2),                
         colorscale='Rainbow',   
         opacity=1
     )
@@ -54,28 +54,18 @@ trace1 = go.Scatter(
     mode = 'markers',
     name = 'output',
     marker=dict(
-        size=4,
-        color='green',                
+        size=1,
+        color=np.sqrt(input_real**2 + input_imag**2),                
         colorscale='Rainbow',   
         opacity=1
     )
 )
 data = []
-"""
-for idx in range(len(input_real)):
-    trace_new = go.Scatter(
-        x=[input_real[idx],output_real[idx]],
-        y=[input_imag[idx],output_imag[idx]],
-        line=dict(
-            color='blue',
-            width=1
-        )
-    )
-    data.append(trace_new)    
-    
 data.append(trace0)
-"""
-data.append(trace1)
-
 fig = go.Figure(data=data)
-plot(fig, filename='viz.html')
+plot(fig, filename='viz-s.html')
+
+data = []
+data.append(trace1)
+fig = go.Figure(data=data)
+plot(fig, filename='viz-zeta.html')

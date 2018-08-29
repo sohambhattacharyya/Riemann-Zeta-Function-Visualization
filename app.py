@@ -42,7 +42,7 @@ trace0 = go.Scatter(
     name = 'input',
     marker=dict(
         size=4,
-        color='brown',                
+        color=np.sqrt(input_real**2 + input_imag**2),                
         colorscale='Rainbow',   
         opacity=1
     )
@@ -54,12 +54,13 @@ trace1 = go.Scatter(
     name = 'output',
     marker=dict(
         size=4,
-        color='green',                
+        color=np.sqrt(input_real**2 + input_imag**2),                
         colorscale='Rainbow',   
         opacity=1
     )
 )
 data = []
+"""
 for idx in range(len(input_real)):
     trace_new = go.Scatter(
         x=[input_real[idx],output_real[idx]],
@@ -70,9 +71,12 @@ for idx in range(len(input_real)):
         )
     )
     data.append(trace_new)    
-    
+"""    
 data.append(trace0)
-data.append(trace1)
-
 fig = go.Figure(data=data)
-plot(fig, filename='viz.html')
+plot(fig, filename='viz-s.html')
+
+data=[]
+data.append(trace1)
+fig = go.Figure(data=data)
+plot(fig, filename='viz-zeta.html')
