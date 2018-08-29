@@ -18,7 +18,7 @@ def riemann_zeta_approximator(s):
     terms = {}
     if np.iscomplex(s):
         for n in range(10000):
-        if n != 0:
+          if n != 0:
             denominator = n**s
             nth_term = 1 / denominator
             value += nth_term
