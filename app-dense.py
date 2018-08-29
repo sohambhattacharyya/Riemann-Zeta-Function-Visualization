@@ -12,12 +12,16 @@ from plotly.offline import download_plotlyjs, init_notebook_mode, plot, iplot
 import plotly.graph_objs as go
 
 DEBUG = False
+# WARNING: Increasing precision will incur heavy computation cost and will
+#          cause massive slowdown. 
+ARITHMATIC_PRECISION = 5
+
 
 def riemann_zeta_approximator(s):
     value = 0
     terms = {}
     if np.iscomplex(s):
-        for n in range(10000):
+        for n in range(10**ARITHMATIC_PRECISION):
           if n != 0:
             denominator = n**s
             nth_term = 1 / denominator
