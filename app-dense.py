@@ -14,14 +14,14 @@ import plotly.graph_objs as go
 DEBUG = False
 # WARNING: Increasing precision will incur heavy computation cost and will
 #          cause massive slowdown. 
-ARITHMATIC_PRECISION = 5
+PSEUDO_ARITHMATIC_PRECISION = 5
 
 
 def riemann_zeta_approximator(s):
     value = 0
     terms = {}
     if np.iscomplex(s):
-        for n in range(10**ARITHMATIC_PRECISION):
+        for n in range(10**PSEUDO_ARITHMATIC_PRECISION):
           if n != 0:
             denominator = n**s
             nth_term = 1 / denominator
